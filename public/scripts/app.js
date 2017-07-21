@@ -25,14 +25,25 @@ $(document).ready(function() {
     });
     $(this).trigger("reset");
   });
+
+  $('#albums').on('click', '.add-song', function(e) {
+      console.log('add-song clicked!');
+      var id= $(this).closest('.album').data('album-id'); // "5665ff1678209c64e51b4e7b"
+      console.log('id',id);
+      $('#songModal').data('album-id', id);
+      $('#songModal').modal('show')
+  });
+
+
+
 });
+
 
 function renderMultipleAlbums(albums) {
   albums.forEach(function(album) {
     renderAlbum(album);
   });
 }
-
 
 function renderAlbum(album) {
   console.log('rendering album', album);
@@ -96,11 +107,3 @@ function renderAlbum(album) {
   `);
   $('#albums').prepend(albumHtml);
 }
-
-
-
-$('#albums').on('click', '.add-song', function(e) {
-    console.log('add-song clicked!');
-    var id= $(this).closest('.album').data('data._id');
-    console.log('id',id);
-});
