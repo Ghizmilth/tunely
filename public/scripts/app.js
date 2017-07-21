@@ -33,8 +33,14 @@ function renderMultipleAlbums(albums) {
   });
 }
 
+
 function renderAlbum(album) {
   console.log('rendering album', album);
+  var songString = "";
+  album.songs.forEach(function (song){
+    songString = `${songString} - (${song.trackNumber}) ${song.name}`
+  });
+
   var albumHtml = (`
     <div class="row album" data-album-id=${album._id}>
 
@@ -68,7 +74,7 @@ function renderAlbum(album) {
 
                   <li class="list-group-item">
                   <h4 class="inline-header">Songs:</h4>
-                  <span> – (1) Swamped – (2) Heaven's a Lie – (3) Daylight Dancer – (4) Humane – (5) Self Deception – (6) Aeon – (7) Tight Rope – </span>
+                  <span>${songString}</span>
                   </li>
 
 
@@ -79,6 +85,7 @@ function renderAlbum(album) {
             <!-- end of album internal row -->
 
             <div class='panel-footer'>
+              <button class='btn btn-primary add-song'>Add Song</button>
             </div>
 
           </div>
@@ -89,3 +96,11 @@ function renderAlbum(album) {
   `);
   $('#albums').prepend(albumHtml);
 }
+
+
+
+$('#albums').on('click', '.add-song', function(e) {
+    console.log('add-song clicked!');
+    var id= $(this).closest('.album').data('data._id');
+    console.log('id',id);
+});
