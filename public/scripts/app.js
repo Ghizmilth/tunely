@@ -28,15 +28,32 @@ $(document).ready(function() {
 
   $('#albums').on('click', '.add-song', function(e) {
       console.log('add-song clicked!');
-      var id= $(this).closest('.album').data('album-id'); // "5665ff1678209c64e51b4e7b"
-      console.log('id',id);
+      var id= $(this).closest('.album').data('album-id');
+      console.log('clicked album id',id);
       $('#songModal').data('album-id', id);
       $('#songModal').modal('show')
   });
 
 
+  $('#saveSong').on('click', function handleNewSongSubmit(e) {
+    e.preventDefault();
+    var albumId = $('#songModal').data("albumId");
+    console.log('save song id', albumId);
+//    let newSongName = req.params.songName;
+
+    // get data from modal fields
+    // get album ID
+    // POST to SERVER
+    // clear form
+    // close modal
+    // update the correct album to show the new song }
+    console.log("Modal buttons was submitted");
+  });
 
 });
+
+
+
 
 
 function renderMultipleAlbums(albums) {
