@@ -45,6 +45,13 @@ $(document).ready(function() {
     success: handleSuccess,
     error: handleError
   });
+
+  $('#album-form form').on('submit', function(e){
+    e.preventDefault();
+    let formData = $(this).serialize();
+    console.log(formData);
+  })
+
 });
 
 function handleSuccess(albums){
@@ -100,11 +107,6 @@ function renderAlbum(album) {
   $('#albums').append(albumHtml);
 };
 
-$('album-form form').on('submit', function(e){
-  e.preventDefault();
-  let formData = $(this).serialize();
-  console.log(formData);
-})
 
 
 
