@@ -36,7 +36,7 @@ function renderMultipleAlbums(albums) {
 function renderAlbum(album) {
   console.log('rendering album', album);
   var albumHtml = (`
-    <div class="row album">
+    <div class="row album" data-album-id=${album._id}>
 
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
